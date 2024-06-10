@@ -11,6 +11,9 @@ export default class FormCadastroCliente extends Component<props> {
         return (
             <div className="container-fluid">
                 <form>
+                    <div className="alert alert-info" role="alert">
+                        Cadastro de Cliente
+                    </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="basic-addon1" style={{ background: tema }}>Nome</span>
                         <input type="text" className="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1" />

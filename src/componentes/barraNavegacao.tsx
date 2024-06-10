@@ -5,7 +5,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 type props = {
     tema: string,
-    botoes: string[],
+    botoes: string[][],
+    titulos: string[],
     seletorView: Function
 }
 
@@ -20,9 +21,25 @@ export default class BarraNavegacao extends Component<props>{
         if (this.props.botoes.length <= 0) {
             return <></>
         } else {
-            let lista = this.props.botoes.map(valor =>
-                <li key={valor} className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => this.props.seletorView(valor, e)}>{valor}</a>
+            let lista = this.props.botoes.map((valores, index) =>
+                // <li class="nav-item dropdown">
+                //     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                //         Dropdown
+                //     </a>
+                //     <ul class="dropdown-menu">
+                //         <li><a class="dropdown-item" href="#">Action</a></li>
+                //         <li><a class="dropdown-item" href="#">Another action</a></li>
+                //         <li><hr class="dropdown-divider"></li>
+                //         <li><a class="dropdown-item" href="#">Something else here</a></li>
+                //     </ul>
+                // </li>
+                <li key={index} className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">{this.props.titulos[index]}</a>
+                    <ul className="dropdown-menu">
+                        {valores.map((valor) => (
+                            <li><a className="dropdown-item" href="#" onClick={(e) => this.props.seletorView(valor, e)}>{valor}</a></li>
+                        ))}
+                    </ul>
                 </li>
             )
             return lista
